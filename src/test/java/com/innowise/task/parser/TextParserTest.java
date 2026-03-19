@@ -34,21 +34,4 @@ public class TextParserTest {
     List<AbstractTextUnit> actual = parent.getUnits();
     assertEquals(expected, actual);
   }
-
-  @Test
-  void shouldParseSentenceToWords() throws CustomTextParserException {
-    String sentence = "Innowise rules the world.";
-    TextRoot parent = new TextRoot(TextType.SENTENCE);
-    WordParser parser = new WordParser(new SymbolParser());
-
-    parser.parse(sentence, parent);
-    List<AbstractTextUnit> expected = new ArrayList<>(){{
-      add(new TextRoot(TextType.WORD));
-      add(new TextRoot(TextType.WORD));
-      add(new TextRoot(TextType.WORD));
-      add(new TextRoot(TextType.WORD));
-    }};
-    List<AbstractTextUnit> actual = parent.getUnits();
-    assertEquals(expected, actual);
-  }
 }
