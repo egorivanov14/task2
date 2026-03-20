@@ -1,23 +1,21 @@
 package com.innowise.task.parser;
 
-import com.innowise.task.element.TextType;
-import com.innowise.task.element.impl.TextRoot;
-import com.innowise.task.exception.CustomTextParserException;
+import com.innowise.task.entity.TextType;
+import com.innowise.task.entity.impl.TextRoot;
 
 public class SentenceParser extends AbstractTextParser {
-  private static final String SENTENCE_DELIMITER = "[.!?]\\s+";
 
-  public SentenceParser(WordParser nextParser) {
-    super.setNextParser(nextParser);
+  public SentenceParser() {
+    super.setNextParser(new LexemeParser());
   }
 
   @Override
-  public void parse(String content, TextRoot parent) throws CustomTextParserException {
+  public void parse(String content, TextRoot parent){
     String[] sentences = content.split(SENTENCE_DELIMITER);
 
     for (String sentence : sentences) {
       TextRoot sentenceRoot = new TextRoot(TextType.SENTENCE);
-      parent.addElement(sentenceRoot);
+      parent.addComponent(sentenceRoot);
       AbstractTextParser nextParser = getNextParser();
       nextParser.parse(sentence, sentenceRoot);
     }

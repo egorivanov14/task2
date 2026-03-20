@@ -15,10 +15,12 @@ public class CustomFileReaderImpl implements CustomFileReader {
 
   @Override
   public List<String> read(Path path) throws CustomFileReaderException {
+    logger.info("Reading exercise text from file.");
     List<String> content;
     try{
       content = Files.readAllLines(path);
     } catch (IOException e) {
+      logger.error("Failed to read file.");
       throw new CustomFileReaderException("Failed to read file.", e);
     }
     return content;

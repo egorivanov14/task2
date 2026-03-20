@@ -1,13 +1,13 @@
-package com.innowise.task.element.impl;
+package com.innowise.task.entity.impl;
 
-import com.innowise.task.element.AbstractTextUnit;
-import com.innowise.task.element.TextType;
+import com.innowise.task.entity.AbstractTextComponent;
+import com.innowise.task.entity.TextType;
 
-public class TextLeaf extends AbstractTextUnit {
+public class TextLeaf extends AbstractTextComponent {
   private final Character symbol;
 
-  public TextLeaf(Character symbol) {
-    super(TextType.SYMBOL);
+  public TextLeaf(Character symbol, TextType type) {
+    super(type);
     this.symbol = symbol;
   }
 
@@ -16,7 +16,7 @@ public class TextLeaf extends AbstractTextUnit {
   }
 
   @Override
-  public String buildText() {
+  public String toString() {
     return symbol.toString();
   }
 
@@ -36,5 +36,10 @@ public class TextLeaf extends AbstractTextUnit {
       }
     }
     return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return symbol.hashCode() + getType().hashCode();
   }
 }

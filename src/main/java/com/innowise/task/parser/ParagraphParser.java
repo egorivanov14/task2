@@ -1,29 +1,27 @@
 package com.innowise.task.parser;
 
-import com.innowise.task.element.TextType;
-import com.innowise.task.element.impl.TextRoot;
-import com.innowise.task.exception.CustomTextParserException;
+import com.innowise.task.entity.TextType;
+import com.innowise.task.entity.impl.TextRoot;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ParagraphParser extends AbstractTextParser {
-  private static final String PARAGRAPH_DELIMITER = "\\n\\s*";
+  private static final Logger logger = LogManager.getLogger(ParagraphParser.class);
 
-  public ParagraphParser(SentenceParser nextParser) {
-    super.setNextParser(nextParser);
+  public ParagraphParser() {
+    super.setNextParser(new SentenceParser());
   }
 
   @Override
-  public void parse(String content, TextRoot parent) throws CustomTextParserException {
-    if (content != null && parent != null) {
-      String[] paragraphs = content.split(PARAGRAPH_DELIMITER);
+  public void parse(String content, TextRoot parent) {
+    logger.info("Parsing text to paragraphs.");
+    String[] paragraphs = content.split(PARAGRAPH_DELIMITER);
 
-      for (String paragraph : paragraphs) {
-        TextRoot paragraphRoot = new TextRoot(TextType.PARAGRAPH);
-        parent.addElement(paragraphRoot);
-        AbstractTextParser nextParser = getNextParser();
-        nextParser.parse(paragraph, paragraphRoot);
-      }
-    } else {
-      throw new CustomTextParserException("One of parameters in method is null.");
+    for (String paragraph : paragraphs) {
+      TextRoot paragraphRoot = new TextRoot(TextType.PARAGRAPH);
+      parent.addComponent(paragraphRoot);
+      AbstractTextParser nextParser = getNextParser();
+      nextParser.parse(paragraph, paragraphRoot);
     }
   }
 }

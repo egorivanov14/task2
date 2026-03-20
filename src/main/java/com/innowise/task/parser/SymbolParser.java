@@ -1,7 +1,8 @@
 package com.innowise.task.parser;
 
-import com.innowise.task.element.impl.TextLeaf;
-import com.innowise.task.element.impl.TextRoot;
+import com.innowise.task.entity.TextType;
+import com.innowise.task.entity.impl.TextLeaf;
+import com.innowise.task.entity.impl.TextRoot;
 
 public class SymbolParser extends AbstractTextParser {
   @Override
@@ -9,8 +10,14 @@ public class SymbolParser extends AbstractTextParser {
     char[] symbols = content.toCharArray();
 
     for (char symbol : symbols) {
-      TextLeaf symbolLeaf = new TextLeaf(symbol);
-      parent.addElement(symbolLeaf);
+      TextLeaf symbolLeaf;
+      if(Character.isLetter(symbol)){
+        symbolLeaf = new TextLeaf(symbol, TextType.LETTER);
+      }
+      else{
+        symbolLeaf = new TextLeaf(symbol, TextType.SYMBOL);
+      }
+      parent.addComponent(symbolLeaf);
     }
   }
 }
