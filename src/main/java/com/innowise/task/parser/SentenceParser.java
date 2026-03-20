@@ -6,7 +6,7 @@ import com.innowise.task.entity.impl.TextRoot;
 public class SentenceParser extends AbstractTextParser {
 
   public SentenceParser() {
-    super.setNextParser(new LexemeParser());
+    super.setNextSuccessor(new LexemeParser());
   }
 
   @Override
@@ -16,8 +16,8 @@ public class SentenceParser extends AbstractTextParser {
     for (String sentence : sentences) {
       TextRoot sentenceRoot = new TextRoot(TextType.SENTENCE);
       parent.addComponent(sentenceRoot);
-      AbstractTextParser nextParser = getNextParser();
-      nextParser.parse(sentence, sentenceRoot);
+      AbstractTextParser nextSuccessor = getNextSuccessor();
+      nextSuccessor.parse(sentence, sentenceRoot);
     }
   }
 }

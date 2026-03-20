@@ -6,6 +6,10 @@ import com.innowise.task.entity.impl.TextRoot;
 
 public class SymbolParser extends AbstractTextParser {
   @Override
+  public void setNextSuccessor(AbstractTextParser nextSuccessor) {
+  }
+
+  @Override
   public void parse(String content, TextRoot parent) {
     char[] symbols = content.toCharArray();
 

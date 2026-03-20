@@ -9,7 +9,7 @@ public class ParagraphParser extends AbstractTextParser {
   private static final Logger logger = LogManager.getLogger(ParagraphParser.class);
 
   public ParagraphParser() {
-    super.setNextParser(new SentenceParser());
+    super.setNextSuccessor(new SentenceParser());
   }
 
   @Override
@@ -20,8 +20,8 @@ public class ParagraphParser extends AbstractTextParser {
     for (String paragraph : paragraphs) {
       TextRoot paragraphRoot = new TextRoot(TextType.PARAGRAPH);
       parent.addComponent(paragraphRoot);
-      AbstractTextParser nextParser = getNextParser();
-      nextParser.parse(paragraph, paragraphRoot);
+      AbstractTextParser nextSuccessor = getNextSuccessor();
+      nextSuccessor.parse(paragraph, paragraphRoot);
     }
   }
 }

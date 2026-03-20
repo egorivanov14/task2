@@ -6,12 +6,23 @@ import com.innowise.task.entity.TextType;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.innowise.task.entity.TextType.*;
+
 public class TextRoot extends AbstractTextComponent {
 
   private final List<AbstractTextComponent> components = new ArrayList<>();
 
   public TextRoot(TextType type) {
     super(type);
+  }
+
+  @Override
+  public int countSymbols() {
+    int counter = 0;
+    for (AbstractTextComponent component : components) {
+      counter += component.countSymbols();
+    }
+    return counter;
   }
 
   public void addComponent(AbstractTextComponent component) {
@@ -25,13 +36,19 @@ public class TextRoot extends AbstractTextComponent {
   @Override
   public String toString() {
     StringBuilder content = new StringBuilder();
-    for (AbstractTextComponent element : components) {
-      TextType type = element.getType();
-      switch (type){
-        case PARAGRAPH -> content.append(PARAGRAPH_BREAK);
-        case LEXEME -> content.append(SPACE_SYMBOL);
+    for (AbstractTextComponent component : components) {
+      TextType type = component.getType();
+      switch (type) {
+        case PARAGRAPH -> {
+          content.append(TABULATION);
+          content.append(component.toString());
+          content.append(NEW_LINE);
+        }
+        case LEXEME -> {
+          content.append(component.toString());
+          content.append(SPACE_SYMBOL);
+        }
       }
-      content.append(element.toString());
     }
     return content.toString();
   }
@@ -52,10 +69,8 @@ public class TextRoot extends AbstractTextComponent {
 
   @Override
   public int hashCode() {
-    int hashCode = 0;
-    for (AbstractTextComponent composite : components) {
-      hashCode += composite.hashCode();
-    }
-    return hashCode;
+    TextType type = getType();
+    int hashCode = (type != null) ? type.hashCode() : 0;
+    return 31 * hashCode + components.hashCode();
   }
 }

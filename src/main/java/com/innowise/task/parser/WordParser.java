@@ -6,20 +6,20 @@ import com.innowise.task.entity.impl.TextRoot;
 public class WordParser extends AbstractTextParser {
 
   public WordParser() {
-    super.setNextParser(new SymbolParser());
+    super.setNextSuccessor(new SymbolParser());
   }
 
   @Override
   public void parse(String content, TextRoot parent) {
-    AbstractTextParser nextParser = getNextParser();
+    AbstractTextParser nextSuccessor = getNextSuccessor();
     String[] components = content.split(WORD_DELIMITER);
     for (String component : components) {
       if (WORD_PATTERN.matcher(component).matches()) {
         TextRoot wordRoot = new TextRoot(TextType.WORD);
         parent.addComponent(wordRoot);
-        nextParser.parse(component, wordRoot);
+        nextSuccessor.parse(component, wordRoot);
       } else {
-        nextParser.parse(component, parent);
+        nextSuccessor.parse(component, parent);
       }
     }
   }

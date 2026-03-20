@@ -16,6 +16,11 @@ public class TextLeaf extends AbstractTextComponent {
   }
 
   @Override
+  public int countSymbols() {
+    return 1;
+  }
+
+  @Override
   public String toString() {
     return symbol.toString();
   }
@@ -40,6 +45,7 @@ public class TextLeaf extends AbstractTextComponent {
 
   @Override
   public int hashCode() {
-    return symbol.hashCode() + getType().hashCode();
+    TextType type = getType();
+    return 5 * symbol.hashCode() + ((type != null) ? type.hashCode() : 0);
   }
 }
