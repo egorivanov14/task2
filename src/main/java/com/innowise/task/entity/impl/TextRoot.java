@@ -2,6 +2,8 @@ package com.innowise.task.entity.impl;
 
 import com.innowise.task.entity.AbstractTextComponent;
 import com.innowise.task.entity.TextType;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.List;
 import static com.innowise.task.entity.TextType.*;
 
 public class TextRoot extends AbstractTextComponent {
+  private static final Logger logger = LogManager.getLogger(TextRoot.class);
 
   private final List<AbstractTextComponent> components = new ArrayList<>();
 
@@ -41,13 +44,14 @@ public class TextRoot extends AbstractTextComponent {
       switch (type) {
         case PARAGRAPH -> {
           content.append(TABULATION);
-          content.append(component.toString());
+          content.append(component);
           content.append(NEW_LINE);
         }
         case LEXEME -> {
-          content.append(component.toString());
+          content.append(component);
           content.append(SPACE_SYMBOL);
         }
+        default -> content.append(component);
       }
     }
     return content.toString();

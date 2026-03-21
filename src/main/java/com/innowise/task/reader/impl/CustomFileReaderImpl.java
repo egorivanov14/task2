@@ -14,11 +14,11 @@ public class CustomFileReaderImpl implements CustomFileReader {
   private static final Logger logger = LogManager.getLogger(CustomFileReaderImpl.class);
 
   @Override
-  public List<String> read(Path path) throws CustomFileReaderException {
+  public String read(Path path) throws CustomFileReaderException {
     logger.info("Reading exercise text from file.");
-    List<String> content;
+    String content;
     try{
-      content = Files.readAllLines(path);
+      content = Files.readString(path);
     } catch (IOException e) {
       logger.error("Failed to read file.");
       throw new CustomFileReaderException("Failed to read file.", e);
