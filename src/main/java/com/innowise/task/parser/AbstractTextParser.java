@@ -5,7 +5,7 @@ import com.innowise.task.entity.impl.TextRoot;
 import java.util.regex.Pattern;
 
 public abstract class AbstractTextParser {
-  protected static final String PARAGRAPH_DELIMITER = " {2,}";
+  protected static final String PARAGRAPH_DELIMITER = "\\n\\s+";
   protected static final String SENTENCE_DELIMITER = "(?<=[.!?])\\s+";
   protected static final String LEXEMES_DELIMITER = "\\s";
   protected static final String WORD_DELIMITER = "(?=[\\p{Punct}])|(?<=[\\p{Punct}])";

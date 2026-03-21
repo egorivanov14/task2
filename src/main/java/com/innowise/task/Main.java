@@ -28,5 +28,8 @@ public class Main {
     CustomFileWriter writer = new CustomFileWriterImpl();
 
     writer.write(outputText);
+
+    int symbolsCount = textRoot.countSymbols();
+    System.out.println(symbolsCount);
   }
 }

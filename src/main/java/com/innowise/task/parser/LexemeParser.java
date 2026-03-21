@@ -14,7 +14,6 @@ public class LexemeParser extends AbstractTextParser {
 
   @Override
   public void parse(String content, TextRoot parent) {
-    logger.info("Parsing sentence to lexeme.");
     String[] sentenceComponents = content.split(LEXEMES_DELIMITER);
 
     AbstractTextParser nextSuccessor = getNextSuccessor();
