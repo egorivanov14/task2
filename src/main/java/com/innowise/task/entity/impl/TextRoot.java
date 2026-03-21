@@ -39,17 +39,23 @@ public class TextRoot extends AbstractTextComponent {
   @Override
   public String toString() {
     StringBuilder content = new StringBuilder();
-    for (AbstractTextComponent component : components) {
+    int componentsSize = components.size();
+    for (int i = 0; i < componentsSize; i++) {
+      AbstractTextComponent component = components.get(i);
       TextType type = component.getType();
       switch (type) {
         case PARAGRAPH -> {
           content.append(TABULATION);
           content.append(component);
-          content.append(NEW_LINE);
+          if (i < componentsSize - 1) {
+            content.append(NEW_LINE);
+          }
         }
         case LEXEME -> {
           content.append(component);
-          content.append(SPACE_SYMBOL);
+          if (i < componentsSize - 1) {
+            content.append(SPACE_SYMBOL);
+          }
         }
         default -> content.append(component);
       }
