@@ -29,6 +29,18 @@ public class TextRoot extends AbstractTextComponent {
     components.add(component);
   }
 
+  public void setComponent(AbstractTextComponent component, int index){
+    components.set(index, component);
+  }
+
+  public List<AbstractTextComponent> getComponents(){
+    return new ArrayList<>(components);
+  }
+
+  public int getSize(){
+    return components.size();
+  }
+
   @Override
   public String toString() {
     StringBuilder content = new StringBuilder();
