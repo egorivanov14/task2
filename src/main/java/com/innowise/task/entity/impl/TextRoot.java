@@ -2,8 +2,6 @@ package com.innowise.task.entity.impl;
 
 import com.innowise.task.entity.AbstractTextComponent;
 import com.innowise.task.entity.TextType;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +9,6 @@ import java.util.List;
 import static com.innowise.task.entity.TextType.*;
 
 public class TextRoot extends AbstractTextComponent {
-  private static final Logger logger = LogManager.getLogger(TextRoot.class);
 
   private final List<AbstractTextComponent> components = new ArrayList<>();
 
@@ -30,10 +27,6 @@ public class TextRoot extends AbstractTextComponent {
 
   public void addComponent(AbstractTextComponent component) {
     components.add(component);
-  }
-
-  public List<AbstractTextComponent> getComponents() {
-    return components;
   }
 
   @Override
@@ -64,13 +57,13 @@ public class TextRoot extends AbstractTextComponent {
   }
 
   @Override
-  public boolean equals(Object o) {
-    if (this == o) {
+  public boolean equals(Object object) {
+    if (this == object) {
       return true;
     }
-    if (o != null) {
-      if (o.getClass().equals(this.getClass())) {
-        TextRoot objectRoot = (TextRoot) o;
+    if (object != null) {
+      if (object.getClass().equals(this.getClass())) {
+        TextRoot objectRoot = (TextRoot) object;
         return components.equals(objectRoot.components);
       }
     }
