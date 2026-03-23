@@ -22,7 +22,7 @@ public class ParagraphParser extends AbstractTextParser {
       parent.addComponent(paragraphRoot);
       AbstractTextParser nextSuccessor = getNextSuccessor();
       nextSuccessor.parse(paragraph, paragraphRoot);
-      logger.info("Text has {} paragraphs.", paragraphs.length);
+      logger.debug("Text has {} paragraphs.", paragraphs.length);
     }
   }
 }

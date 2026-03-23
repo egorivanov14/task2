@@ -3,6 +3,8 @@ package com.innowise.task.entity.impl;
 import com.innowise.task.entity.AbstractTextComponent;
 import com.innowise.task.entity.TextType;
 
+import java.util.List;
+
 public class TextLeaf extends AbstractTextComponent {
   private final Character symbol;
 
@@ -11,8 +13,9 @@ public class TextLeaf extends AbstractTextComponent {
     this.symbol = symbol;
   }
 
-  public Character getSymbol() {
-    return symbol;
+  @Override
+  public int getSize() {
+    return 1;
   }
 
   @Override
@@ -36,9 +39,7 @@ public class TextLeaf extends AbstractTextComponent {
 
     if (o.getClass().equals(this.getClass())) {
       TextLeaf leaf = (TextLeaf) o;
-      if (this.symbol.equals(leaf.symbol)) {
-        return true;
-      }
+      return this.symbol.equals(leaf.symbol);
     }
     return false;
   }

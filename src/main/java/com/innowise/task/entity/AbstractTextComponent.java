@@ -11,6 +11,8 @@ public abstract class AbstractTextComponent {
     return type;
   }
 
+  public abstract int getSize();
+
   public abstract int countSymbols();
 
   public abstract String toString();

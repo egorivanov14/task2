@@ -37,6 +37,7 @@ public class TextRoot extends AbstractTextComponent {
     return new ArrayList<>(components);
   }
 
+  @Override
   public int getSize(){
     return components.size();
   }
@@ -58,7 +59,7 @@ public class TextRoot extends AbstractTextComponent {
         }
         case LEXEME -> {
           content.append(component);
-          if (i < componentsSize - 1) {
+          if (componentsSize > 1) {
             content.append(SPACE_SYMBOL);
           }
         }
