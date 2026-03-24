@@ -29,16 +29,16 @@ public class TextRoot extends AbstractTextComponent {
     components.add(component);
   }
 
-  public void setComponent(AbstractTextComponent component, int index){
+  public void setComponent(AbstractTextComponent component, int index) {
     components.set(index, component);
   }
 
-  public List<AbstractTextComponent> getComponents(){
+  public List<AbstractTextComponent> getComponents() {
     return new ArrayList<>(components);
   }
 
   @Override
-  public int getSize(){
+  public int getSize() {
     return components.size();
   }
 
@@ -51,7 +51,9 @@ public class TextRoot extends AbstractTextComponent {
       TextType type = component.getType();
       switch (type) {
         case PARAGRAPH -> {
-          content.append(TABULATION);
+          if (componentsSize > 1) {
+            content.append(TABULATION);
+          }
           content.append(component);
           if (i < componentsSize - 1) {
             content.append(NEW_LINE);
@@ -59,9 +61,7 @@ public class TextRoot extends AbstractTextComponent {
         }
         case LEXEME -> {
           content.append(component);
-          if (componentsSize > 1) {
-            content.append(SPACE_SYMBOL);
-          }
+          content.append(SPACE_SYMBOL);
         }
         default -> content.append(component);
       }

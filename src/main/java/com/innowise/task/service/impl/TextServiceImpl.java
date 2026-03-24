@@ -25,7 +25,7 @@ public class TextServiceImpl implements TextService {
   }
 
   @Override
-  public List<AbstractTextComponent> sortByLexemesLength(TextRoot root) {
+  public AbstractTextComponent sortByLexemesLength(TextRoot root) {
     List<AbstractTextComponent> sentences = getSentences(root);
     Comparator<AbstractTextComponent> comparator = (sentence1, sentence2) -> {
       int size1 = sentence1.getSize();
@@ -33,7 +33,11 @@ public class TextServiceImpl implements TextService {
       return size1 - size2;
     };
     sentences.sort(comparator);
-    return sentences;
+    TextRoot sortedRoot = new TextRoot(TextType.TEXT);
+    for(AbstractTextComponent sentence : sentences){
+      sortedRoot.addComponent(sentence);
+    }
+    return sortedRoot;
   }
 
   private AbstractTextComponent getLexeme(AbstractTextComponent sentence, int index) {
@@ -49,7 +53,7 @@ public class TextServiceImpl implements TextService {
       if (type.equals(TextType.SENTENCE)) {
         sentences.add(component);
       } else if (type.equals(TextType.TEXT) || type.equals(TextType.PARAGRAPH)) {
-        sentences.addAll(getSentences(root));
+        sentences.addAll(getSentences((TextRoot) component));
       }
     }
     return sentences;

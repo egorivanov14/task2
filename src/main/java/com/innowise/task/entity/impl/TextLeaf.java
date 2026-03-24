@@ -3,8 +3,6 @@ package com.innowise.task.entity.impl;
 import com.innowise.task.entity.AbstractTextComponent;
 import com.innowise.task.entity.TextType;
 
-import java.util.List;
-
 public class TextLeaf extends AbstractTextComponent {
   private final Character symbol;
 
