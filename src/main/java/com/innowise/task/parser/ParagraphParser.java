@@ -14,15 +14,14 @@ public class ParagraphParser extends AbstractTextParser {
 
   @Override
   public void parse(String content, TextRoot parent) {
-    logger.info("Parsing text to paragraphs.");
     String[] paragraphs = content.split(PARAGRAPH_DELIMITER);
+    logger.debug("Text has {} paragraphs.", paragraphs.length);
 
     for (String paragraph : paragraphs) {
       TextRoot paragraphRoot = new TextRoot(TextType.PARAGRAPH);
       parent.addComponent(paragraphRoot);
       AbstractTextParser nextSuccessor = getNextSuccessor();
       nextSuccessor.parse(paragraph, paragraphRoot);
-      logger.debug("Text has {} paragraphs.", paragraphs.length);
     }
   }
 }

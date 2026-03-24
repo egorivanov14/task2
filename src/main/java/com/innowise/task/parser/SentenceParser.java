@@ -13,9 +13,9 @@ public class SentenceParser extends AbstractTextParser {
   }
 
   @Override
-  public void parse(String content, TextRoot parent){
-    logger.info("Parsing paragraph to sentences.");
+  public void parse(String content, TextRoot parent) {
     String[] sentences = content.split(SENTENCE_DELIMITER);
+    logger.debug("Paragraph has {} sentences.", sentences.length);
 
     for (String sentence : sentences) {
       TextRoot sentenceRoot = new TextRoot(TextType.SENTENCE);
