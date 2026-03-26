@@ -1,4 +1,4 @@
-package com.innowise.task.entity;
+package com.innowise.task.composite;
 
 public abstract class AbstractTextComponent {
   private final TextType type;

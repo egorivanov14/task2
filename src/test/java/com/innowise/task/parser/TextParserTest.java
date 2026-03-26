@@ -1,7 +1,7 @@
 package com.innowise.task.parser;
 
-import com.innowise.task.entity.TextType;
-import com.innowise.task.entity.impl.TextRoot;
+import com.innowise.task.composite.TextType;
+import com.innowise.task.composite.TextRoot;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

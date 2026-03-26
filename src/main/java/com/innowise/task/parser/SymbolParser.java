@@ -1,8 +1,8 @@
 package com.innowise.task.parser;
 
-import com.innowise.task.entity.TextType;
-import com.innowise.task.entity.impl.TextLeaf;
-import com.innowise.task.entity.impl.TextRoot;
+import com.innowise.task.composite.TextType;
+import com.innowise.task.composite.TextLeaf;
+import com.innowise.task.composite.TextRoot;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

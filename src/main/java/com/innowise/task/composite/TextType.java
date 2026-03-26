@@ -1,4 +1,4 @@
-package com.innowise.task.entity;
+package com.innowise.task.composite;
 
 public enum TextType {
   TEXT, PARAGRAPH, SENTENCE, LEXEME, WORD, LETTER, SYMBOL;

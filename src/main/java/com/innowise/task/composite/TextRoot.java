@@ -1,12 +1,9 @@
-package com.innowise.task.entity.impl;
-
-import com.innowise.task.entity.AbstractTextComponent;
-import com.innowise.task.entity.TextType;
+package com.innowise.task.composite;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.innowise.task.entity.TextType.*;
+import static com.innowise.task.composite.TextType.*;
 
 public class TextRoot extends AbstractTextComponent {
 
@@ -18,11 +15,9 @@ public class TextRoot extends AbstractTextComponent {
 
   @Override
   public int countSymbols() {
-    int counter = 0;
-    for (AbstractTextComponent component : components) {
-      counter += component.countSymbols();
-    }
-    return counter;
+    return components.stream()
+            .mapToInt(AbstractTextComponent::countSymbols)
+            .sum();
   }
 
   public void addComponent(AbstractTextComponent component) {

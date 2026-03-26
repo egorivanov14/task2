@@ -1,7 +1,4 @@
-package com.innowise.task.entity.impl;
-
-import com.innowise.task.entity.AbstractTextComponent;
-import com.innowise.task.entity.TextType;
+package com.innowise.task.composite;
 
 public class TextLeaf extends AbstractTextComponent {
   private final Character symbol;

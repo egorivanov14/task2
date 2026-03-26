@@ -1,6 +1,6 @@
 package com.innowise.task.parser;
 
-import com.innowise.task.entity.impl.TextRoot;
+import com.innowise.task.composite.TextRoot;
 
 import java.util.regex.Pattern;
 

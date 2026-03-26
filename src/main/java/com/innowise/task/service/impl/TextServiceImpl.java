@@ -1,8 +1,8 @@
 package com.innowise.task.service.impl;
 
-import com.innowise.task.entity.AbstractTextComponent;
-import com.innowise.task.entity.TextType;
-import com.innowise.task.entity.impl.TextRoot;
+import com.innowise.task.composite.AbstractTextComponent;
+import com.innowise.task.composite.TextType;
+import com.innowise.task.composite.TextRoot;
 import com.innowise.task.service.TextService;
 
 import java.util.ArrayList;
